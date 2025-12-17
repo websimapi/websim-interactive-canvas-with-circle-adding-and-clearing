@@ -149,10 +149,17 @@ function render(){
 }
 
 function shade(hslString, changeL){
-  // crude convert hsl(...) and adjust lightness
-  const m = /hsl\((\d+\.?\d*)\s*\d*%?\s*(\d+\.?\d*)%?\)/.exec(hslString);
-  if(!m) return hslString;
-  const h = +m[1], s = 80, l = Math.max(0, Math.min(100, +m[2] + changeL));
+  // handle missing/invalid input gracefully
+  if (!hslString || typeof hslString !== 'string') {
+    // fallback neutral color
+    return `hsl(200 80% ${Math.max(0, Math.min(100, 50 + changeL))}%)`;
+  }
+  // support both "hsl(h s% l%)" and "hsl(h, s%, l%)" formats
+  const m = /hsl\(\s*([\d.]+)\s*[ ,]?\s*([\d.]+)%?\s*[ ,]?\s*([\d.]+)%?\s*\)/i.exec(hslString);
+  if (!m) return hslString;
+  const h = +m[1];
+  const s = +m[2] || 80;
+  const l = Math.max(0, Math.min(100, +m[3] + changeL));
   return `hsl(${h} ${s}% ${l}%)`;
 }
 
