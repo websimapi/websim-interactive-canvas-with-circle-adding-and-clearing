@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "nanoid": "https://esm.sh/nanoid"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <section class="panel" id="panel">
+      <div class="controls">
+        <button id="addBtn" aria-label="Add circle">＋</button>
+        <button id="clearBtn" aria-label="Clear">✕</button>
+        <label class="switch">
+          <input id="darkToggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <canvas id="scene" width="720" height="720" aria-label="Interactive canvas"></canvas>
+    </section>
+    <footer class="hint">Tap to add a fast ball. Drag to move the canvas.</footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
